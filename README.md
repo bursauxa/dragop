@@ -1,2 +1,2 @@
 # dragop
-Drag-and-drop library for VueJS that supports SVG elements
+A drag-and-drop library for VueJS that supports SVG elements.
