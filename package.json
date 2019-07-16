@@ -1,0 +1,42 @@
+{
+  "name": "dragop",
+  "description": "A drag-and-drop library for VueJS that supports SVG elements.",
+  "private": false,
+  "version": "1.0.0",
+  "author": "Antoine Bursaux (bursauxa@gmail.com)",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "drag-and-drop",
+    "svg"
+  ],
+  "homepage": "https://github.com/bursauxa/dragop#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bursauxa/dragop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bursauxa/dragop/issues"
+  },
+  "main": "dist/dragop.js",
+  "scripts": {
+    "tslint": "tslint --project .",
+    "mdlint": "markdownlint . --ignore node_modules",
+    "webpack": "webpack --mode production --progress",
+    "build": "npm run tslint && npm run mdlint && npm run webpack"
+  },
+  "husky": {},
+  "dependencies": {
+    "vue": "2.6.10"
+  },
+  "devDependencies": {
+    "markdownlint": "0.15.0",
+    "markdownlint-cli": "0.17.0",
+    "ts-loader": "6.0.4",
+    "tslint": "^5.18.0",
+    "typescript": "3.4.3",
+    "webpack": "4.35.2",
+    "webpack-cli": "3.3.5"
+  },
+  "peerDependencies": {}
+}
