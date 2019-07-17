@@ -1,6 +1,6 @@
 import { DirectiveOptions, VNode, VNodeDirective } from 'vue';
-import GlobalDragState from '../models/DragState';
-import VueHelper from '../vue/VueHelper';
+import { GlobalDragState } from '../models/DragState';
+import { VueHelper } from '../vue/VueHelper';
 import { getMetadata, setMetadata } from '../models/DragDropMetadata';
 
 function createMouseupHandler(element: HTMLElement, binding: VNodeDirective, node: VNode) {
@@ -18,7 +18,7 @@ function createMouseupHandler(element: HTMLElement, binding: VNodeDirective, nod
     };
 }
 
-const onDrop: DirectiveOptions = {
+export const onDrop: DirectiveOptions = {
     bind(el: HTMLElement, binding: VNodeDirective, node: VNode) {
         el.addEventListener('mouseup', createMouseupHandler(el, binding, node), false);
     },
@@ -26,5 +26,3 @@ const onDrop: DirectiveOptions = {
         el.removeEventListener('mouseup', (evt: MouseEvent) => { }, false);
     }
 };
-
-export default onDrop;

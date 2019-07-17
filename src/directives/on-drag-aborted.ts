@@ -16,7 +16,7 @@ function createMousemoveHandler(binding: VNodeDirective) {
     };
 }
 
-const onDragAborted: DirectiveOptions = {
+export const onDragAborted: DirectiveOptions = {
     bind(el: HTMLElement, binding: VNodeDirective) {
         document.addEventListener('drag-aborted', createMousemoveHandler(binding), false);
     },
@@ -24,5 +24,3 @@ const onDragAborted: DirectiveOptions = {
         document.removeEventListener('drag-aborted', (evt: Event) => { }, false);
     }
 };
-
-export default onDragAborted;

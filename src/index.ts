@@ -1,6 +1,6 @@
-import VueHelper from './vue/VueHelper';
+import { VueHelper } from './vue/VueHelper';
 
-export class Dragop {
+export default class Dragop {
     public static addToVue() {
         VueHelper.addDirectives();
     }

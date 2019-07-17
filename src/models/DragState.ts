@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { DragDropEventData, DragStatus, DragDropData } from './DragDropEventData';
 
-class DragState {
+export class DragState {
     private sourceData: DragDropData | null = null;
     private targetData: DragDropData | null = null;
     private status?: DragStatus;
@@ -111,6 +111,4 @@ class DragState {
     }
 }
 
-const GlobalDragState = new DragState();
-
-export default GlobalDragState;
+export const GlobalDragState = new DragState();

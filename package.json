@@ -19,7 +19,7 @@
     "url": "https://github.com/bursauxa/dragop/issues"
   },
   "main": "dist/dragop.js",
-  "types": "src/dragop.d.ts",
+  "types": "dist/dragop.d.ts",
   "scripts": {
     "tslint": "tslint --project .",
     "mdlint": "markdownlint . --ignore node_modules",
@@ -29,6 +29,7 @@
   "husky": {},
   "dependencies": {},
   "devDependencies": {
+    "dts-bundle-webpack": "^1.0.2",
     "markdownlint": "^0.15.0",
     "markdownlint-cli": "^0.17.0",
     "ts-loader": "^6.0.4",

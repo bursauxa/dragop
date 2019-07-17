@@ -1,6 +1,6 @@
 import { DirectiveOptions, VNode, VNodeDirective } from 'vue';
-import GlobalDragState from '../models/DragState';
-import VueHelper from '../vue/VueHelper';
+import { GlobalDragState } from '../models/DragState';
+import { VueHelper } from '../vue/VueHelper';
 
 function createMousedownHandler(element: HTMLElement, binding: VNodeDirective, node: VNode) {
     return (event: MouseEvent) => {
@@ -12,7 +12,7 @@ function createMousedownHandler(element: HTMLElement, binding: VNodeDirective, n
     };
 }
 
-const draggable: DirectiveOptions = {
+export const draggable: DirectiveOptions = {
     bind(el: HTMLElement, binding: VNodeDirective, node: VNode) {
         el.addEventListener('mousedown', createMousedownHandler(el, binding, node), false);
     },
@@ -20,5 +20,3 @@ const draggable: DirectiveOptions = {
         el.removeEventListener('mousedown', (evt: MouseEvent) => { }, false);
     }
 };
-
-export default draggable;
