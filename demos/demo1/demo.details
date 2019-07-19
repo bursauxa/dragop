@@ -1,0 +1,7 @@
+---
+ name: Dragop demo 1
+ description: basic example of how to use dragop with SVG
+ authors:
+   - Antoine Bursaux (bursauxa@gmail.com)
+ normalize_css: no
+ load_type: d
