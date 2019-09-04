@@ -45,6 +45,51 @@ methods: {
 }
 ```
 
-[Full example using HTML elements](https://jsfiddle.net/bursauxa/24k98rcx/)
+[Running example on Fiddle, using HTML elements](https://jsfiddle.net/bursauxa/24k98rcx/)
 
-[Full example using SVG elements]
+[Running example on Fiddle, using SVG elements](https://jsfiddle.net/bursauxa/tk86omL2/)
+
+### Feedback based on physical coordinates
+
+To provide visual feedback during a drag-and-drop operation, the first thing to do is applying the `v-on-drag` directive on an element that is capable of providing the feedback (something we could call the "canvas", although not in the HTML sense).
+
+`v-on-drag` takes an argument that is the callback that will be regularly called when a drag operation is in progress. This callback will be called with one argument, of type `DragInProgressEventData`.
+
+`DragInProgressEventData` notably includes coordinates representative of the current drag operation. In the `target` property, `x` and `y` represent the offset from the `v-on-drag` element.
+
+```html
+<div class="box" v-draggable v-on-drag="onDrag">
+    {{ x ? x + ' :: ' + y : 'Drag me over myself!' }}
+</div>
+```
+
+```js
+data: {
+    x: null,
+    y: null
+},
+methods: {
+    onDrag: function(evt) {
+        this.x = evt.target.x;
+        this.y = evt.target.y;
+    }
+}
+```
+
+`DragInProgressEventData` also contains information about the elements subject of the operation. This can be useful if there are several elements that each define their own callback.
+
+```js
+onDrag: function(evt) {
+    dragOverSelf = evt.source.directiveHolder === evt.target.directiveHolder;
+}
+```
+
+To stop providing feedback when the drag operation is complete, you can handle things in the relevant `v-on-drop` callbacks. In addition, you may want to have a handler with a wider scope for cases where the drag operation is aborted (it ends without landing on an element with `v-on-drop`). The `v-on-drag-aborted` directive is provided for this purpose.
+
+`v-on-drag-aborted` takes an argument that is the callback to execute when a drag operation is aborted. This callback will be called with one argument, of type `DragAbortedEventData`. There is no restriction on where this directive can be applied, but for semantic purposes, we recommend applying it on the common ancestor of all the `v-draggable` items.
+
+[Running example on Fiddle](https://jsfiddle.net/bursauxa/35frmva9/)
+
+### Moving rectangles in a SVG
+
+In the `source` property of `DragInProgressEventData`, `x` and `y` represent the offset from the `v-draggable` element. This is typically useful for the scenario where you want to move items in a SVG canvas.
